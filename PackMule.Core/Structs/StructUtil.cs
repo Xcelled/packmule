@@ -1,15 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PackMule.Core.Structs
 {
-	public static class StructExtensions
+	/// <summary>
+	/// Contains helpers for dealing with structs.
+	/// </summary>
+	static class StructUtil
 	{
+		/// <summary>
+		/// Gets the bytes that represent a given struct.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="obj">The object.</param>
+		/// <returns>System.Byte[].</returns>
 		public static byte[] GetBytes<T>(this T obj) where T : struct
 		{
 			var size = Marshal.SizeOf(obj);
@@ -23,6 +28,13 @@ namespace PackMule.Core.Structs
 			return arr;
 		}
 
+		/// <summary>
+		/// Gets the structure from a byte array.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="arr">The arr.</param>
+		/// <param name="offset">The offset.</param>
+		/// <returns>T.</returns>
 		public static T GetStruct<T>(this byte[] arr, int offset) where T : struct
 		{
 			var handle = GCHandle.Alloc(arr, GCHandleType.Pinned);
@@ -31,6 +43,12 @@ namespace PackMule.Core.Structs
 			return stuff;
 		}
 
+		/// <summary>
+		/// Reads a struct from a stream.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="file">The file.</param>
+		/// <returns>T.</returns>
 		public static T ReadFromStream<T>(this Stream file) where T : struct
 		{
 			var buff = new byte[Marshal.SizeOf(typeof(T))];
@@ -38,6 +56,12 @@ namespace PackMule.Core.Structs
 			return GetStruct<T>(buff, 0);
 		}
 
+		/// <summary>
+		/// Writes a struct to stream.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="obj">The object.</param>
+		/// <param name="output">The output.</param>
 		public static void WriteToStream<T>(this T obj, Stream output) where T : struct
 		{
 			var b = GetBytes(obj);
@@ -45,6 +69,11 @@ namespace PackMule.Core.Structs
 			output.Write(b, 0, b.Length);
 		}
 
+		/// <summary>
+		/// Returns the size of a structure
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <returns>System.Int32.</returns>
 		public static int SizeOf<T>() where T : struct
 		{
 			return Marshal.SizeOf(typeof(T));

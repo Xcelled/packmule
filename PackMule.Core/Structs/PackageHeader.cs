@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices;
 
 namespace PackMule.Core.Structs
 {
 	[StructLayout(LayoutKind.Sequential, Pack = 1)]
-	public struct PackageHeader
+	struct PackageHeader
 	{
 		public int EntryCount;
 		public int InfoHeaderSize;
-		public int BlankSize;
-		public int DataSectionSize;
+		public int BlankSize; // The blank is an area after the header, possibly to allow appending to the pack
+		public uint DataSectionSize;
 		[MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.U1, SizeConst = 16)]
 		public byte[] Zero;
 	}
