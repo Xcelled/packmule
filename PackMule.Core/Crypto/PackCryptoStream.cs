@@ -1,32 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PackMule.Core.Crypto
 {
 	/// <summary>
 	/// A stream that applies Mabinogi PACK "encryption" to its data.
 	/// </summary>
-	public class MabiCryptoStream : Stream
+	class PackCryptoStream : Stream
 	{
 		/// <summary>
-		/// The _orig
+		/// The underlying stream
 		/// </summary>
 		private readonly Stream _orig;
 		/// <summary>
-		/// The _MT
+		/// The Mersenne Twister
 		/// </summary>
 		private readonly MersenneTwister _mt = new MersenneTwister();
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="MabiCryptoStream"/> class.
+		/// Initializes a new instance of the <see cref="PackCryptoStream"/> class.
 		/// </summary>
 		/// <param name="orig">The original.</param>
 		/// <param name="seed">The seed.</param>
-		public MabiCryptoStream(Stream orig, int seed)
+		public PackCryptoStream(Stream orig, int seed)
 		{
 			_orig = orig;
 

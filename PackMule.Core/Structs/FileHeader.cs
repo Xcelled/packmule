@@ -1,23 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices;
 
 namespace PackMule.Core.Structs
 {
+	/// <summary>
+	/// Struct FileHeader
+	/// </summary>
 	[StructLayout(LayoutKind.Sequential, Pack = 1)]
-	public struct FileHeader
+	struct FileHeader
 	{
+		/// <summary>
+		/// The signature of the pack file
+		/// </summary>
 		[MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.U1, SizeConst = 8)]
 		public byte[] Signature;
-		public uint Revision;
+		/// <summary>
+		/// The revision
+		/// </summary>
+		public int Revision;
+		/// <summary>
+		/// The entry count
+		/// </summary>
 		public int EntryCount;
-		[MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef=typeof(FiletimeToDateTimeMarshaler))]
+		/// <summary>
+		/// The creation date?
+		/// </summary>
 		public long Ft1;
-		[MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(FiletimeToDateTimeMarshaler))]
+		/// <summary>
+		/// The modified date?
+		/// </summary>
 		public long Ft2;
+		/// <summary>
+		/// The path that the file is "rooted" at
+		/// </summary>
 		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 480)]
 		public string Path;
 	}
