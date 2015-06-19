@@ -46,7 +46,7 @@
     <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   <!-- WPF stuff -->
-  <ItemGroup Condition="!$(DefineConstants.Contains(__MonoCS__))">
+  <ItemGroup Condition=" '$(OS)' == 'Windows_NT' ">
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -70,6 +70,7 @@
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
+	
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
