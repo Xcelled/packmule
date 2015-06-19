@@ -1,23 +1,5 @@
 language: csharp
 solution: PackMule.sln
-
-env:
-  global:
-   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-   #   via the "travis encrypt" command using the project repo's public key
-   - secure: "M9UMs3L8phZp4KE1c7NbOrhOAEfCo4xppJs1JY+Vrxlt/IVlXV11TboSH7fzHhiR2KsR/Sl4/3dMM6I+Oy/clVPHvotlhevfnmUXbjJJAp4lqcRq/W/UoSA5tmsYu/Xqf3Ov5n2JYUthXhKPA86XDGc7+JKs+zQn3rdKJ4SgYhB86BL2xmS+H6EaYmpunFVk77vZHbejV/cKX3taavpWBAK3PpXBxbBKmXnZCBgk9f2M8fe3BaWgnDeaTtDs5rLvX2m4RlX9lH50mzmYyF0uTsL/r1D3azzwfvDX3favwQAMJOjRnFLXQTGMP4z5Uq90VDv5YWap1opLbYQzo8zOPQsSOhc3kChlUe+59Wk3c069kEqJFcAC3PPN5PPRUuuegioIPfzvXQnX75BxVsgbK5CFWkpkpGyvLIy/K+/NIGriuGQVNKWfQkqWMvopHv61jzF309iuZynuBr5ab2KotEh1sJPKXRp3H2x/7nTZ+RiLjbDz0kW3SCP6VnMeKAKNWAzVMWhFnXCO/LJJBOa9jKpP2BZAyOioFx3C50JnGDpfKdT9RQjC/qVQHjn0AG3sHhtPtNBpcmoHgvLsGpYvU5NjxI8LeFALeyZ/xDDkRBv1ynMMP8NllDzWpSVfmfyNy34heTIMYOzmlVQEygt2pOQpz1FJG7d271fW3mCFOvM="
-
-addons:
-  coverity_scan:
-    project:
-      name: "Xcelled/packmule"
-      description: "Build submitted via Travis CI"
-    notification_email: j12@ketelaar.com
-    build_command_prepend: "xbuild PackMule.sln /p:Configuration=Release /t:Clean"
-    build_command:   "xbuild /p:Configuration=Release PackMule.sln /t:Rebuild"
-    branch_pattern: coverity_scan
-
 script:
-  - xbuild PackMule.sln /p:Configuration=Release /t:Clean
-  - xbuild /p:Configuration=Release /t:Rebuild
+  - xbuild /p:Configuration=Release
   - mono ./packages/xunit.runners.*/tools/xunit.console.clr4.exe ./PackMule.Tests/bin/Release/PackMule.Tests.dll
