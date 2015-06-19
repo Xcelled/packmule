@@ -13,10 +13,11 @@ addons:
       name: "Xcelled/packmule"
       description: "Build submitted via Travis CI"
     notification_email: j12@ketelaar.com
-    build_command_prepend: "xbuild /p:Configuration=Release PackMule.sln /t:Clean"
-    build_command:   "xbuild /p:Configuration=Release PackMule.sln /t:Rebuild"
+    build_command_prepend: "xbuild PackMule.sln -t:Clean"
+    build_command:   "xbuild -p:Configuration=Release PackMule.sln -t:Rebuild"
     branch_pattern: coverity_scan
 
 script:
-  - xbuild /p:Configuration=Release PackMule.sln
+  - xbuild PackMule.sln -t:Clean
+  - xbuild -p:Configuration=Release PackMule.sln -t:Rebuild
   - mono ./packages/xunit.runners.*/tools/xunit.console.clr4.exe ./PackMule.Tests/bin/Release/PackMule.Tests.dll
