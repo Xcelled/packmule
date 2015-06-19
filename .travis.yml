@@ -1,4 +1,6 @@
 language: csharp
+mono:
+  - 3.12.0
 solution: PackMule.sln
 script:
   - xbuild /p:Configuration=Release PackMule.sln
