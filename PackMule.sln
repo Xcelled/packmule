@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackMule", "PackMule.csproj", "{C61FD773-DC5F-4824-A2E5-A54CD017327D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackMule", "PackMule\PackMule.csproj", "{C61FD773-DC5F-4824-A2E5-A54CD017327D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackMule.Core", "..\PackMule.Core\PackMule.Core.csproj", "{7646A830-B7BF-4774-97E8-28E7494866BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackMule.Core", "PackMule.Core\PackMule.Core.csproj", "{7646A830-B7BF-4774-97E8-28E7494866BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
