@@ -7,6 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackMule", "PackMule\PackMu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackMule.Core", "PackMule.Core\PackMule.Core.csproj", "{7646A830-B7BF-4774-97E8-28E7494866BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackMule.Tests", "PackMule.Tests\PackMule.Tests.csproj", "{27C12982-66CC-40F2-A5BE-40578C807D3D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{287C32B1-65F1-40F5-BDF3-86FFA246DB0B}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +28,10 @@ Global
 		{7646A830-B7BF-4774-97E8-28E7494866BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7646A830-B7BF-4774-97E8-28E7494866BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7646A830-B7BF-4774-97E8-28E7494866BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27C12982-66CC-40F2-A5BE-40578C807D3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27C12982-66CC-40F2-A5BE-40578C807D3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27C12982-66CC-40F2-A5BE-40578C807D3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27C12982-66CC-40F2-A5BE-40578C807D3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
