@@ -17,7 +17,7 @@ namespace PackMule.Core
 		/// <returns>System.Byte[].</returns>
 		public static byte[] EncodeName(string name)
 		{
-			var nameRaw = Encoding.ASCII.GetBytes(name);
+			var nameRaw = Encoding.UTF8.GetBytes(name);
 
 			var requiredLength = nameRaw.Length + 1; // +1 for null terminal
 
