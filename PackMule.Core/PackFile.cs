@@ -120,7 +120,7 @@ namespace PackMule.Core
 				var nameStart = ptr + lengthSize;
 				var maxNameLength = nameSectionLength - lengthSize - 1; // 1 for the trailing \0, which we don't care about.
 
-				var name = Encoding.ASCII.GetString(infoHeader, nameStart, maxNameLength).TrimEnd('\0');
+				var name = Encoding.UTF8.GetString(infoHeader, nameStart, maxNameLength).TrimEnd('\0');
 
 				ptr += nameSectionLength;
 
