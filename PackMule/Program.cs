@@ -76,9 +76,7 @@ namespace PackMule
 		{
 			var toExtract = new List<Regex>();
 
-			if (remainingArguments.Length == 0)
-				toExtract.Add(new Regex(""));
-			else
+			if (remainingArguments.Length != 0)
 			{
 				if (_useRegex)
 				{
@@ -93,6 +91,7 @@ namespace PackMule
 
 			var invalidChars = Path.GetInvalidPathChars();
 			var packfiles = GetPackFiles();
+			var extractAll = toExtract.Count == 0;
 
 			Directory.CreateDirectory(_destFolder);
 			int nPf = 0, nExtracted = 0;
@@ -109,7 +108,7 @@ namespace PackMule
 
 					var normalizedFn = fullName.Normalize();
 
-					if (toExtract.Any(a => a.IsMatch(normalizedFn)))
+					if (extractAll || toExtract.Any(a => a.IsMatch(normalizedFn)))
 					{
 						Console.Write($"\tExtracting {fullName} ... ");
 
