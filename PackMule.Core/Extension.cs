@@ -2,7 +2,7 @@
 
 namespace PackMule.Core
 {
-	static class Extension
+	public static class Extension
 	{
 		/// <summary>
 		/// Compares the given string to the current instance, as paths.

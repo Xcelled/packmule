@@ -16,7 +16,7 @@ namespace PackMule.Core.Structs
 		/// <summary>
 		/// The revision
 		/// </summary>
-		public int Revision;
+		public uint Revision;
 		/// <summary>
 		/// The entry count
 		/// </summary>

@@ -39,7 +39,7 @@ namespace PackMule.Core
 		/// Gets or sets the revision of the packfile.
 		/// </summary>
 		/// <value>The revision.</value>
-		public int Revision { get; set; }
+		public long Revision { get; set; }
 		/// <summary>
 		/// Gets or sets the root of the packfile.
 		/// </summary>
@@ -56,17 +56,21 @@ namespace PackMule.Core
 		/// <value>The modified.</value>
 		public DateTime Modified { get; set; }
 
+		public string Name { get; }
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="PackFile"/> class.
 		/// </summary>
 		/// <param name="source">The source.</param>
+		/// <param name="name">Name of the packfile</param>
 		/// <exception cref="System.ArgumentException">Source must be seekable</exception>
-		public PackFile(Stream source)
+		public PackFile(Stream source, string name)
 		{
 			if (!source.CanSeek)
 				throw new ArgumentException("Source must be seekable");
 
 			_source = source;
+			Name = name;
 
 			Read();
 		}
@@ -286,7 +290,7 @@ namespace PackMule.Core
 			var head = new FileHeader
 			{
 				Signature = PackCommon.Header,
-				Revision = Revision,
+				Revision = (uint)Revision,
 				EntryCount = Count,
 				Path = Root,
 				Ft1 = Created.ToFileTime(),

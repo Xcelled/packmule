@@ -126,7 +126,7 @@ namespace PackMule.Core
 			var head = new FileHeader
 			{
 				Signature = PackCommon.Header,
-				Revision = Revision,
+				Revision = (uint)Revision,
 				EntryCount = _entries.Count,
 				Path = Root,
 				Ft1 = DateTime.UtcNow.ToFileTimeUtc(),
